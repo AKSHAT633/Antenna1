@@ -1,0 +1,101 @@
+{
+  "feature_columns": [
+    "Freq(GHz)",
+    "length of patch in mm",
+    "width of patch in mm",
+    "Slot length in mm",
+    "slot width in mm",
+    "slot_area",
+    "slot_ratio",
+    "slot_perimeter",
+    "freq_slot_interaction"
+  ],
+  "base_features": [
+    "Freq(GHz)",
+    "length of patch in mm",
+    "width of patch in mm",
+    "Slot length in mm",
+    "slot width in mm"
+  ],
+  "engineered_features": [
+    "slot_area",
+    "slot_ratio",
+    "slot_perimeter",
+    "freq_slot_interaction"
+  ],
+  "scaling": "StandardScaler",
+  "classification_threshold": -23.4,
+  "regression": {
+    "random_forest": {
+      "model": "RandomForestRegressor",
+      "n_estimators": 200,
+      "mae": 2.653,
+      "rmse": 3.1488,
+      "r2": 0.0494,
+      "cv_r2_mean": 0.0755
+    },
+    "svr": {
+      "model": "SVR (RBF kernel)",
+      "C": 100.0,
+      "epsilon": 0.1,
+      "mae": 2.9574,
+      "rmse": 3.5546,
+      "r2": -0.2114,
+      "cv_r2_mean": -0.1983
+    },
+    "best_model": "RandomForest"
+  },
+  "classification": {
+    "gradient_boosting": {
+      "model": "GradientBoostingClassifier",
+      "n_estimators": 150,
+      "accuracy": 0.55,
+      "cv_accuracy_mean": 0.563
+    },
+    "svc": {
+      "model": "SVC (RBF kernel)",
+      "C": 10.0,
+      "accuracy": 0.545,
+      "cv_accuracy_mean": 0.557
+    },
+    "best_model": "GradientBoosting",
+    "labels": {
+      "0": "Adulterated",
+      "1": "Pure"
+    },
+    "threshold": -23.4
+  },
+  "feature_importance_regression": {
+    "length of patch in mm": 0.2302,
+    "Freq(GHz)": 0.2196,
+    "width of patch in mm": 0.2023,
+    "freq_slot_interaction": 0.0945,
+    "slot_ratio": 0.0874,
+    "Slot length in mm": 0.0539,
+    "slot width in mm": 0.0503,
+    "slot_perimeter": 0.0391,
+    "slot_area": 0.0227
+  },
+  "feature_importance_classification": {
+    "Freq(GHz)": 0.258,
+    "length of patch in mm": 0.1602,
+    "freq_slot_interaction": 0.1585,
+    "width of patch in mm": 0.1557,
+    "slot_ratio": 0.1341,
+    "Slot length in mm": 0.0436,
+    "slot width in mm": 0.0426,
+    "slot_perimeter": 0.0347,
+    "slot_area": 0.0127
+  },
+  "slot_importance": {
+    "regression_total": 0.348,
+    "classification_total": 0.4261
+  },
+  "dataset": {
+    "total_samples": 1000,
+    "s11_min": -30.24,
+    "s11_max": -16.09,
+    "s11_mean": -23.38,
+    "s11_median": -23.44
+  }
+}
